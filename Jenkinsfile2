@@ -11,7 +11,6 @@ maven 'Maven'
             steps {
                 script {
                     echo "Building the application"
-                    sh 'mvn package'
                 }
             }
         }

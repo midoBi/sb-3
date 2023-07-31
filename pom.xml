@@ -14,7 +14,7 @@
     <name>sb-3</name>
     <description>sb-3</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
