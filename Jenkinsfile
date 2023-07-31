@@ -19,10 +19,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-       def modules = "${params.MODULES}".split(',')
-       for(module in modules) {
-            echo "Module Name : ${module}"
-       }
         sh 'mvn clean package'
       }
     }
