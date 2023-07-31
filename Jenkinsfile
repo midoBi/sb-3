@@ -48,17 +48,26 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'deploying the application ...'
-                echo "deploying with ${SERVER_CREDENTIALS}"
+            input {
+                message "Select the environment"
+                ok "Done"
+                parameters {
+                   choice(name: 'ENV', choices: ['dev', 'stage', 'production'], description: 'A comma-separated list of modules to build and test')
+
+                }
+
+            }
+
 /*
+  echo 'deploying the application ...'
+                echo "deploying with ${SERVER_CREDENTIALS}"
                 withCredentials([
                         usernamePassword(credentials: 'server-credential', usernameVariable: USER, passwordVariable: PWD)
                 ]) {
                     echo "some script ${USER} ${PWD}"
                 }
  */
-
-                echo "deploying version ${params.VERSION}"
+                echo "Deploying to ${ENV}"
             }
         }
     }
