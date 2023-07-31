@@ -47,16 +47,16 @@ pipeline {
             }
         }
         stage('Deploy') {
+         input {
+                        message "Select the environment"
+                        ok "Done"
+                        parameters {
+                           choice(name: 'ENV', choices: ['dev', 'stage', 'production'], description: 'A comma-separated list of modules to build and test')
+
+                        }
+
+                    }
             steps {
-            input {
-                message "Select the environment"
-                ok "Done"
-                parameters {
-                   choice(name: 'ENV', choices: ['dev', 'stage', 'production'], description: 'A comma-separated list of modules to build and test')
-
-                }
-
-            }
 
 /*
   echo 'deploying the application ...'
