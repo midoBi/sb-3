@@ -1,10 +1,3 @@
-#!/usr/bin/env groovy
-import org.apache.tomcat.jni.Library
-
-//@Library('jenkins-shared-library')_
-@Library('jenkins-shared-library')
-def gv
-
 pipeline {
     agent any
 
@@ -13,10 +6,24 @@ pipeline {
     }
 
     stages {
+
+        stage('Test application') {
+            when {
+                expression {
+                    BRANCH_NAME == 'main' || BRANCH_NAME == 'dev'
+                }
+            }
+            steps {
+                script {
+                    echo "Test the application"
+                }
+            }
+        }
+
         stage('Build jar') {
             steps {
                 script {
-                    buildJar();
+                    echo "Building the application"
                 }
             }
         }
@@ -24,7 +31,8 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    buildImage();
+                    echo "Building the docker image"
+
                 }
             }
         }
