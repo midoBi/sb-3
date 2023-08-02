@@ -16,7 +16,7 @@ pipeline {
         stage('Build jar') {
             steps {
                 script {
-                    buildJar();
+                    buildJar()
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    buildImage();
+                    buildImage '123456789mehdibirouk/demo-app:jma-2.0'
                 }
             }
         }
